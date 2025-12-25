@@ -18,7 +18,7 @@
 
 ```
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #000;
         color: #fff;
         overflow-x: hidden;
@@ -26,7 +26,7 @@
     }
 
     .header {
-        padding: 20px 20px 16px;
+        padding: 20px;
         background: #000;
         border-bottom: 1px solid #222;
         position: sticky;
@@ -37,13 +37,12 @@
         align-items: center;
     }
 
-    .header-left h1 {
+    .header h1 {
         font-size: 24px;
         font-weight: 600;
-        letter-spacing: -0.5px;
     }
 
-    .header-left p {
+    .header p {
         font-size: 14px;
         color: #888;
         margin-top: 4px;
@@ -56,7 +55,6 @@
         padding: 8px 16px;
         border-radius: 8px;
         font-size: 13px;
-        font-weight: 500;
         cursor: pointer;
     }
 
@@ -74,23 +72,17 @@
         border: 1px solid #222;
     }
 
-    .adventure-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 16px;
-    }
-
     .adventure-title {
         font-size: 16px;
         font-weight: 600;
+        margin-bottom: 16px;
     }
 
     .adventure-options {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
-        margin: 16px 0;
+        margin-bottom: 16px;
     }
 
     .adventure-option {
@@ -109,12 +101,12 @@
         border-color: #fff;
     }
 
-    .adventure-option .option-emoji {
+    .option-emoji {
         font-size: 24px;
         margin-bottom: 4px;
     }
 
-    .adventure-option .option-label {
+    .option-label {
         font-size: 13px;
         font-weight: 600;
     }
@@ -123,7 +115,6 @@
         background: #0a0a0a;
         border-radius: 12px;
         padding: 16px;
-        margin-top: 16px;
     }
 
     .preferences-box h3 {
@@ -132,7 +123,6 @@
         margin-bottom: 12px;
         color: #888;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
 
     .wine-types {
@@ -141,18 +131,17 @@
         gap: 12px;
     }
 
-    .wine-type {
-        font-size: 13px;
-        color: #ccc;
-        line-height: 1.6;
-    }
-
     .wine-type-label {
         font-size: 11px;
         color: #666;
         margin-bottom: 4px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+    }
+
+    .wine-type {
+        font-size: 13px;
+        color: #ccc;
+        line-height: 1.6;
     }
 
     .camera-btn {
@@ -169,13 +158,11 @@
         align-items: center;
         justify-content: center;
         gap: 12px;
-        transition: all 0.2s;
         margin: 20px 0 12px;
     }
 
     .camera-btn:active {
         transform: scale(0.98);
-        background: #f0f0f0;
     }
 
     .camera-btn svg {
@@ -189,19 +176,11 @@
         border: 1px solid #333;
     }
 
-    .upload-btn:active {
-        background: #222;
-    }
-
-    .captured-pages {
-        margin: 20px 0;
-    }
-
     .page-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
-        margin-bottom: 16px;
+        margin: 20px 0 16px;
     }
 
     .page-thumbnail {
@@ -290,65 +269,6 @@
         object-fit: cover;
     }
 
-    .camera-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        pointer-events: none;
-    }
-
-    .focus-frame {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        height: 60%;
-        border: 2px solid rgba(255,255,255,0.5);
-        border-radius: 8px;
-    }
-
-    .quality-indicator {
-        position: absolute;
-        top: 80px;
-        left: 20px;
-        right: 20px;
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(10px);
-        padding: 16px;
-        border-radius: 12px;
-        pointer-events: none;
-    }
-
-    .quality-status {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 8px;
-    }
-
-    .status-icon {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-
-    .status-good { background: #0f3; }
-    .status-warning { background: #fa0; }
-
-    .status-text {
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .quality-tips {
-        font-size: 12px;
-        color: #ccc;
-        line-height: 1.4;
-    }
-
     .page-counter {
         position: absolute;
         top: 20px;
@@ -383,16 +303,6 @@
         background: #fff;
         border: 4px solid #000;
         cursor: pointer;
-        box-shadow: 0 4px 20px rgba(255,255,255,0.3);
-    }
-
-    .capture-btn:active {
-        transform: scale(0.95);
-    }
-
-    .capture-btn.disabled {
-        background: #666;
-        cursor: not-allowed;
     }
 
     .done-btn {
@@ -417,28 +327,6 @@
         width: 40px;
         height: 40px;
         font-size: 24px;
-        cursor: pointer;
-        backdrop-filter: blur(10px);
-    }
-
-    .zoom-controls {
-        position: absolute;
-        bottom: 120px;
-        right: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .zoom-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(10px);
-        color: #fff;
-        border: 1px solid rgba(255,255,255,0.2);
-        font-size: 20px;
         cursor: pointer;
     }
 
@@ -465,16 +353,6 @@
         to { transform: rotate(360deg); }
     }
 
-    .loading-text {
-        font-size: 15px;
-        margin-bottom: 8px;
-    }
-
-    .loading-subtext {
-        font-size: 13px;
-        color: #666;
-    }
-
     .wine-card {
         background: #111;
         border-radius: 16px;
@@ -485,7 +363,6 @@
 
     .wine-rank {
         display: flex;
-        align-items: flex-start;
         gap: 16px;
         margin-bottom: 16px;
     }
@@ -512,7 +389,6 @@
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 4px;
-        line-height: 1.3;
     }
 
     .wine-meta {
@@ -524,7 +400,6 @@
     .wine-price {
         font-size: 20px;
         font-weight: 700;
-        color: #fff;
         margin-top: 8px;
     }
 
@@ -543,7 +418,6 @@
         color: #888;
         margin-bottom: 4px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
 
     .bar-track {
@@ -556,7 +430,6 @@
     .bar-fill {
         height: 100%;
         border-radius: 3px;
-        transition: width 0.5s ease;
     }
 
     .bar-quality { background: #fff; }
@@ -576,7 +449,6 @@
         color: #888;
         margin: 24px 0 12px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
 
     .error-card {
@@ -589,68 +461,8 @@
         color: #ff4444;
     }
 
-    .history-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.95);
-        z-index: 2000;
-        display: none;
-        overflow-y: auto;
-    }
-
-    .history-modal.active {
-        display: block;
-    }
-
-    .history-header {
-        position: sticky;
-        top: 0;
-        background: #000;
-        padding: 20px;
-        border-bottom: 1px solid #222;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .history-item {
-        background: #111;
-        border-radius: 12px;
-        padding: 16px;
-        margin: 12px 20px;
-        border: 1px solid #222;
-        cursor: pointer;
-    }
-
-    .history-date {
-        font-size: 12px;
-        color: #666;
-        margin-bottom: 8px;
-    }
-
-    .history-wines {
-        font-size: 14px;
-        color: #ccc;
-    }
-
     input[type="file"] {
         display: none;
-    }
-
-    .zoom-indicator {
-        position: absolute;
-        bottom: 180px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(10px);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 13px;
-        pointer-events: none;
     }
 </style>
 ```
@@ -658,9 +470,9 @@
 </head>
 <body>
     <div class="header">
-        <div class="header-left">
+        <div>
             <h1>Wine Analyzer</h1>
-            <p>Find the best value on any wine list</p>
+            <p>Find the best value</p>
         </div>
         <button class="history-btn" id="historyBtn">History</button>
     </div>
@@ -668,9 +480,7 @@
 ```
 <div class="container">
     <div class="adventure-card">
-        <div class="adventure-header">
-            <div class="adventure-title">Adventure Mode</div>
-        </div>
+        <div class="adventure-title">Adventure Mode</div>
         
         <div class="adventure-options">
             <div class="adventure-option active" data-level="1">
@@ -692,11 +502,11 @@
             <div class="wine-types">
                 <div>
                     <div class="wine-type-label">Reds</div>
-                    <div class="wine-type" id="redsList">Pinot Noir, Gamay, Beaujolais</div>
+                    <div class="wine-type" id="redsList">Pinot Noir, Gamay</div>
                 </div>
                 <div>
                     <div class="wine-type-label">Whites</div>
-                    <div class="wine-type" id="whitesList">Chablis, Sancerre, Grüner Veltliner</div>
+                    <div class="wine-type" id="whitesList">Chablis, Sancerre</div>
                 </div>
             </div>
         </div>
@@ -731,69 +541,38 @@
     <video id="video" autoplay playsinline></video>
     <canvas id="canvas" style="display:none"></canvas>
     
-    <div class="camera-overlay">
-        <div class="focus-frame"></div>
-        <div class="quality-indicator" id="qualityIndicator">
-            <div class="quality-status">
-                <div class="status-icon" id="statusIcon"></div>
-                <div class="status-text" id="statusText">Analyzing...</div>
-            </div>
-            <div class="quality-tips" id="qualityTips">Position menu within frame</div>
-        </div>
-    </div>
-
-    <div class="zoom-controls">
-        <button class="zoom-btn" id="zoomIn">+</button>
-        <button class="zoom-btn" id="zoomOut">−</button>
-    </div>
-    
-    <div class="zoom-indicator" id="zoomIndicator" style="display:none;">1.0x</div>
-
     <div class="camera-controls">
         <button class="done-btn" id="doneBtn" style="display:none;">Done</button>
         <button class="capture-btn" id="captureBtn"></button>
     </div>
 </div>
 
-<div class="history-modal" id="historyModal">
-    <div class="history-header">
-        <h2>Scan History</h2>
-        <button class="close-camera" id="closeHistory">×</button>
-    </div>
-    <div id="historyList"></div>
-</div>
-
 <script>
     const adventureLevels = {
         1: {
             label: "Safe",
-            reds: ['pinot noir', 'gamay', 'burgundy', 'beaujolais', 'loire red', 'chinon'],
-            whites: ['chablis', 'sancerre', 'gruner veltliner', 'grüner veltliner', 'pouilly-fumé', 'muscadet'],
+            reds: ['pinot noir', 'gamay', 'burgundy', 'beaujolais', 'chinon'],
+            whites: ['chablis', 'sancerre', 'gruner veltliner', 'grüner veltliner', 'muscadet'],
             boost: 1.2
         },
         2: {
             label: "Curious",
-            reds: ['pinot noir', 'gamay', 'grenache', 'garnacha', 'barbera', 'dolcetto', 'valpolicella', 'chinon', 'rioja joven'],
-            whites: ['chablis', 'sancerre', 'gruner veltliner', 'albariño', 'vermentino', 'verdicchio', 'soave', 'fiano', 'chenin blanc'],
+            reds: ['pinot noir', 'gamay', 'grenache', 'barbera', 'dolcetto', 'valpolicella'],
+            whites: ['chablis', 'sancerre', 'albariño', 'verdicchio', 'soave', 'chenin blanc'],
             boost: 1.1
         },
         3: {
             label: "Explorer",
-            reds: ['tempranillo', 'rioja', 'nebbiolo', 'sangiovese', 'merlot', 'syrah', 'monastrell', 'montepulciano', 'zweigelt', 'barbera'],
-            whites: ['viognier', 'roussanne', 'marsanne', 'white burgundy', 'chardonnay', 'semillon', 'vouvray', 'savennières'],
+            reds: ['tempranillo', 'rioja', 'nebbiolo', 'sangiovese', 'syrah', 'monastrell'],
+            whites: ['viognier', 'roussanne', 'chardonnay', 'semillon', 'vouvray'],
             boost: 1.0
         }
     };
 
     let currentAdventureLevel = 1;
     let stream = null;
-    let currentZoom = 1;
-    let videoTrack = null;
-    let qualityCheckInterval = null;
     let capturedPages = [];
-    let scanHistory = JSON.parse(localStorage.getItem('wineHistory') || '[]');
 
-    // Adventure mode selection
     document.querySelectorAll('.adventure-option').forEach(option => {
         option.addEventListener('click', function() {
             document.querySelectorAll('.adventure-option').forEach(o => o.classList.remove('active'));
@@ -806,50 +585,8 @@
     function updateAdventureDisplay() {
         const level = adventureLevels[currentAdventureLevel];
         document.getElementById('preferencesTitle').textContent = `${level.label} includes`;
-        document.getElementById('redsList').textContent = level.reds.slice(0, 3).join(', ');
-        document.getElementById('whitesList').textContent = level.whites.slice(0, 3).join(', ');
-    }
-
-    // History functionality
-    document.getElementById('historyBtn').addEventListener('click', () => {
-        showHistory();
-    });
-
-    document.getElementById('closeHistory').addEventListener('click', () => {
-        document.getElementById('historyModal').classList.remove('active');
-    });
-
-    function showHistory() {
-        const modal = document.getElementById('historyModal');
-        const list = document.getElementById('historyList');
-        
-        if (scanHistory.length === 0) {
-            list.innerHTML = '<div style="padding:40px;text-align:center;color:#666;">No scans yet</div>';
-        } else {
-            list.innerHTML = scanHistory.slice(0, 20).map((scan, i) => `
-                <div class="history-item" onclick="loadHistoryScan(${i})">
-                    <div class="history-date">${new Date(scan.date).toLocaleDateString()} ${new Date(scan.date).toLocaleTimeString()}</div>
-                    <div class="history-wines">${scan.wines.length} wines analyzed • Top pick: ${scan.wines[0]?.name || 'N/A'}</div>
-                </div>
-            `).join('');
-        }
-        
-        modal.classList.add('active');
-    }
-
-    function loadHistoryScan(index) {
-        const scan = scanHistory[index];
-        displayResults(scan.wines);
-        document.getElementById('historyModal').classList.remove('active');
-    }
-
-    function saveToHistory(wines) {
-        scanHistory.unshift({
-            date: new Date().toISOString(),
-            wines: wines
-        });
-        scanHistory = scanHistory.slice(0, 20);
-        localStorage.setItem('wineHistory', JSON.stringify(scanHistory));
+        document.getElementById('redsList').textContent = level.reds.slice(0, 2).join(', ');
+        document.getElementById('whitesList').textContent = level.whites.slice(0, 2).join(', ');
     }
 
     document.getElementById('cameraBtn').addEventListener('click', openCamera);
@@ -860,37 +597,18 @@
     document.getElementById('closeCamera').addEventListener('click', closeCamera);
     document.getElementById('captureBtn').addEventListener('click', capturePhoto);
     document.getElementById('doneBtn').addEventListener('click', finishCapturing);
-    document.getElementById('zoomIn').addEventListener('click', () => adjustZoom(0.2));
-    document.getElementById('zoomOut').addEventListener('click', () => adjustZoom(-0.2));
 
     async function openCamera() {
         try {
             stream = await navigator.mediaDevices.getUserMedia({ 
-                video: { 
-                    facingMode: 'environment',
-                    width: { ideal: 1920 },
-                    height: { ideal: 1080 }
-                } 
+                video: { facingMode: 'environment' } 
             });
             
-            const video = document.getElementById('video');
-            video.srcObject = stream;
+            document.getElementById('video').srcObject = stream;
             document.getElementById('videoContainer').style.display = 'block';
             updatePageCounter();
-
-            videoTrack = stream.getVideoTracks()[0];
-            const capabilities = videoTrack.getCapabilities();
-            
-            if (capabilities.zoom) {
-                currentZoom = videoTrack.getSettings().zoom || 1;
-            }
-
-            video.addEventListener('loadedmetadata', () => {
-                startQualityMonitoring();
-            });
-
         } catch (err) {
-            alert('Camera access denied. Please use the upload option.');
+            alert('Camera access denied. Please use upload option.');
         }
     }
 
@@ -898,35 +616,227 @@
         if (stream) {
             stream.getTracks().forEach(track => track.stop());
         }
-        if (qualityCheckInterval) {
-            clearInterval(qualityCheckInterval);
-        }
         document.getElementById('videoContainer').style.display = 'none';
         document.getElementById('doneBtn').style.display = 'none';
-        currentZoom = 1;
     }
 
     function updatePageCounter() {
         document.getElementById('pageCounter').textContent = `Page ${capturedPages.length + 1}`;
     }
 
-    async function adjustZoom(delta) {
-        if (!videoTrack) return;
-
-        const capabilities = videoTrack.getCapabilities();
-        if (!capabilities.zoom) return;
-
-        const newZoom = Math.max(
-            capabilities.zoom.min,
-            Math.min(capabilities.zoom.max, currentZoom + delta)
-        );
-
-        await videoTrack.applyConstraints({
-            advanced: [{ zoom: newZoom }]
-        });
-
-        currentZoom = newZoom;
+    function capturePhoto() {
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0);
         
-        const indicator = document.getElementById('zoomIndicator');
-        indicator.textContent = `${newZoom.toFixed(
+        canvas.toBlob((blob) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                capturedPages.push(e.target.result);
+                updatePageCounter();
+                document.getElementById('doneBtn').style.display = 'block';
+                displayCapturedPages();
+            };
+            reader.readAsDataURL(blob);
+        }, 'image/jpeg', 0.95);
+    }
+
+    function finishCapturing() {
+        closeCamera();
+        document.getElementById('uploadSection').style.display = 'none';
+    }
+
+    function handleFileUpload(e) {
+        const files = Array.from(e.target.files);
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                capturedPages.push(e.target.result);
+                displayCapturedPages();
+            };
+            reader.readAsDataURL(file);
+        });
+        document.getElementById('uploadSection').style.display = 'none';
+    }
+
+    function displayCapturedPages() {
+        const html = `
+            <div class="page-grid">
+                ${capturedPages.map((page, i) => `
+                    <div class="page-thumbnail">
+                        <img src="${page}" alt="Page ${i+1}">
+                        <div class="page-number">${i+1}</div>
+                        <button class="remove-page" onclick="removePage(${i})">×</button>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="page-actions">
+                <button class="btn-analyze" onclick="analyzeAllPages()">Analyze ${capturedPages.length} Page${capturedPages.length > 1 ? 's' : ''}</button>
+                <button class="btn-add-more" onclick="addMorePages()">+ More</button>
+            </div>
+        `;
+        document.getElementById('capturedSection').innerHTML = html;
+    }
+
+    function removePage(index) {
+        capturedPages.splice(index, 1);
+        if (capturedPages.length === 0) {
+            resetApp();
+        } else {
+            displayCapturedPages();
+        }
+    }
+
+    function addMorePages() {
+        document.getElementById('fileInput').click();
+    }
+
+    function resetApp() {
+        capturedPages = [];
+        document.getElementById('uploadSection').style.display = 'block';
+        document.getElementById('capturedSection').innerHTML = '';
+        document.getElementById('resultsSection').innerHTML = '';
+        document.getElementById('errorSection').innerHTML = '';
+        document.getElementById('fileInput').value = '';
+    }
+
+    async function analyzeAllPages() {
+        document.getElementById('loadingSection').innerHTML = `
+            <div class="loading-card">
+                <div class="spinner"></div>
+                <div style="font-size:15px;margin-bottom:8px;">Analyzing ${capturedPages.length} page${capturedPages.length > 1 ? 's' : ''}...</div>
+                <div style="font-size:13px;color:#666;">This may take a moment</div>
+            </div>
+        `;
+        document.getElementById('errorSection').innerHTML = '';
+        document.getElementById('resultsSection').innerHTML = '';
+
+        try {
+            const imageContents = capturedPages.map((img, i) => ({
+                type: 'image',
+                source: {
+                    type: 'base64',
+                    media_type: 'image/jpeg',
+                    data: img.split(',')[1]
+                }
+            }));
+
+            const level = adventureLevels[currentAdventureLevel];
+            const prompt = `Extract ALL wines from these wine list images. For each wine identify: name, producer, region, vintage, price, classification (Grand Cru, Premier Cru, etc).
 ```
+
+Then analyze based on:
+
+- Appellation hierarchy (village/1er cru/grand cru)
+- Producer reputation
+- Vintage quality for that region
+- User preference (boost wines matching: ${level.reds.join(’, ‘)}, ${level.whites.join(’, ’)})
+
+Return ONLY the TOP 5 wines ranked by VALUE FOR MONEY (not absolute prestige). Keep reasoning SHORT and PRACTICAL.
+
+Format as JSON:
+[{
+“rank”: 1,
+“name”: “Wine Name”,
+“producer”: “Producer”,
+“region”: “Region”,
+“vintage”: “2020”,
+“price”: “45.00”,
+“classification”: “Grand Cru”,
+“qualityScore”: 85,
+“valueScore”: 90,
+“why”: “1-2 sentence practical explanation”
+}]`;
+
+```
+            const response = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 2000,
+                    messages: [{
+                        role: 'user',
+                        content: [...imageContents, { type: 'text', text: prompt }]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+            const text = data.content.find(c => c.type === 'text')?.text || '[]';
+            const jsonMatch = text.match(/\[[\s\S]*\]/);
+            const wines = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+
+            if (wines.length === 0) {
+                throw new Error('No wines found');
+            }
+
+            displayResults(wines);
+        } catch (err) {
+            document.getElementById('errorSection').innerHTML = `
+                <div class="error-card">
+                    Failed to analyze. Please try again or upload clearer images.
+                </div>
+            `;
+        } finally {
+            document.getElementById('loadingSection').innerHTML = '';
+        }
+    }
+
+    function displayResults(wines) {
+        const html = `
+            <div class="section-header">Top 5 by Value</div>
+            ${wines.map((wine, i) => {
+                const rankClass = i === 0 ? 'top1' : i === 1 ? 'top2' : i === 2 ? 'top3' : '';
+                return `
+                    <div class="wine-card">
+                        <div class="wine-rank">
+                            <div class="rank-badge ${rankClass}">${wine.rank || i+1}</div>
+                            <div class="wine-info">
+                                <h3>${wine.name}</h3>
+                                <div class="wine-meta">${wine.producer} • ${wine.vintage}</div>
+                                <div class="wine-meta">${wine.region}${wine.classification ? ' • ' + wine.classification : ''}</div>
+                                <div class="wine-price">£${wine.price}</div>
+                            </div>
+                        </div>
+                        <div class="wine-bars">
+                            <div class="bar-item">
+                                <div class="bar-label">
+                                    <span>Quality</span>
+                                    <span>${wine.qualityScore}/100</span>
+                                </div>
+                                <div class="bar-track">
+                                    <div class="bar-fill bar-quality" style="width:${wine.qualityScore}%"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">
+                                    <span>Value</span>
+                                    <span>${wine.valueScore}/100</span>
+                                </div>
+                                <div class="bar-track">
+                                    <div class="bar-fill bar-value" style="width:${wine.valueScore}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wine-why"><strong>Why:</strong> ${wine.why}</div>
+                    </div>
+                `;
+            }).join('')}
+            <button class="camera-btn" onclick="resetApp()" style="margin-top:20px;">Scan Another List</button>
+        `;
+        document.getElementById('resultsSection').innerHTML = html;
+    }
+
+    document.getElementById('historyBtn').addEventListener('click', () => {
+        alert('History feature coming soon!');
+    });
+
+    updateAdventureDisplay();
+</script>
+```
+
+</body>
+</html>
