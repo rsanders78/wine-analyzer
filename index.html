@@ -3,9 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#000000">
     <title>Wine Analyzer</title>
     <style>
@@ -13,28 +12,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
 ```
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         background: #000;
         color: #fff;
-        overflow-x: hidden;
-        padding-bottom: 80px;
+        padding-bottom: 60px;
     }
 
     .header {
         padding: 20px;
         background: #000;
         border-bottom: 1px solid #222;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 
     .header h1 {
@@ -48,54 +39,43 @@
         margin-top: 4px;
     }
 
-    .history-btn {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        color: #fff;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-size: 13px;
-        cursor: pointer;
-    }
-
     .container {
         max-width: 600px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 20px;
     }
 
-    .adventure-card {
+    .card {
         background: #111;
         border-radius: 16px;
         padding: 20px;
-        margin: 20px 0;
+        margin-bottom: 20px;
         border: 1px solid #222;
     }
 
-    .adventure-title {
+    .card-title {
         font-size: 16px;
         font-weight: 600;
         margin-bottom: 16px;
     }
 
-    .adventure-options {
+    .options {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
         margin-bottom: 16px;
     }
 
-    .adventure-option {
+    .option {
         background: #1a1a1a;
         border: 2px solid #333;
         border-radius: 12px;
         padding: 16px 8px;
         text-align: center;
         cursor: pointer;
-        transition: all 0.2s;
     }
 
-    .adventure-option.active {
+    .option.active {
         background: #fff;
         color: #000;
         border-color: #fff;
@@ -111,40 +91,15 @@
         font-weight: 600;
     }
 
-    .preferences-box {
+    .info-box {
         background: #0a0a0a;
         border-radius: 12px;
         padding: 16px;
-    }
-
-    .preferences-box h3 {
-        font-size: 13px;
-        font-weight: 600;
-        margin-bottom: 12px;
-        color: #888;
-        text-transform: uppercase;
-    }
-
-    .wine-types {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    .wine-type-label {
-        font-size: 11px;
-        color: #666;
-        margin-bottom: 4px;
-        text-transform: uppercase;
-    }
-
-    .wine-type {
         font-size: 13px;
         color: #ccc;
-        line-height: 1.6;
     }
 
-    .camera-btn {
+    .btn {
         width: 100%;
         background: #fff;
         color: #000;
@@ -158,32 +113,27 @@
         align-items: center;
         justify-content: center;
         gap: 12px;
-        margin: 20px 0 12px;
+        margin-bottom: 12px;
     }
 
-    .camera-btn:active {
-        transform: scale(0.98);
+    .btn:active {
+        opacity: 0.8;
     }
 
-    .camera-btn svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .upload-btn {
+    .btn-secondary {
         background: #1a1a1a;
         color: #fff;
         border: 1px solid #333;
     }
 
-    .page-grid {
+    .thumbnails {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
-        margin: 20px 0 16px;
+        margin-bottom: 16px;
     }
 
-    .page-thumbnail {
+    .thumb {
         position: relative;
         aspect-ratio: 3/4;
         border-radius: 8px;
@@ -191,13 +141,13 @@
         border: 2px solid #333;
     }
 
-    .page-thumbnail img {
+    .thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 
-    .page-number {
+    .thumb-num {
         position: absolute;
         top: 4px;
         left: 4px;
@@ -206,14 +156,13 @@
         padding: 2px 6px;
         border-radius: 4px;
         font-size: 11px;
-        font-weight: 600;
     }
 
-    .remove-page {
+    .thumb-remove {
         position: absolute;
         top: 4px;
         right: 4px;
-        background: rgba(255,0,0,0.8);
+        background: #f44;
         color: #fff;
         border: none;
         border-radius: 50%;
@@ -223,120 +172,22 @@
         cursor: pointer;
     }
 
-    .page-actions {
+    .actions {
         display: flex;
         gap: 8px;
     }
 
     .btn-analyze {
         flex: 2;
-        background: #fff;
-        color: #000;
-        border: none;
-        border-radius: 12px;
-        padding: 16px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
     }
 
-    .btn-add-more {
+    .btn-add {
         flex: 1;
-        background: #1a1a1a;
-        color: #fff;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 16px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
     }
 
-    #videoContainer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #000;
-        z-index: 1000;
-        display: none;
-    }
-
-    #video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .page-counter {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(10px);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        pointer-events: none;
-    }
-
-    .camera-controls {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 30px 20px;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .capture-btn {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: #fff;
-        border: 4px solid #000;
-        cursor: pointer;
-    }
-
-    .done-btn {
-        background: #0f3;
-        color: #000;
-        border: none;
-        border-radius: 12px;
-        padding: 12px 24px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    .close-camera {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: rgba(0,0,0,0.5);
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .loading-card {
-        background: #111;
-        border-radius: 16px;
-        padding: 40px 20px;
+    .loading {
         text-align: center;
-        margin: 20px 0;
-        border: 1px solid #222;
+        padding: 40px 20px;
     }
 
     .spinner {
@@ -353,41 +204,39 @@
         to { transform: rotate(360deg); }
     }
 
-    .wine-card {
+    .wine {
         background: #111;
         border-radius: 16px;
         padding: 20px;
-        margin: 12px 0;
+        margin-bottom: 12px;
         border: 1px solid #222;
     }
 
-    .wine-rank {
+    .rank-row {
         display: flex;
         gap: 16px;
         margin-bottom: 16px;
     }
 
-    .rank-badge {
+    .badge {
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #fff, #ddd);
+        background: #fff;
         color: #000;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 20px;
         font-weight: 700;
-        flex-shrink: 0;
     }
 
-    .rank-badge.top1 { background: linear-gradient(135deg, #ffd700, #ffed4e); }
-    .rank-badge.top2 { background: linear-gradient(135deg, #c0c0c0, #e8e8e8); }
-    .rank-badge.top3 { background: linear-gradient(135deg, #cd7f32, #e8b67e); }
+    .badge-1 { background: linear-gradient(135deg, #ffd700, #ffed4e); }
+    .badge-2 { background: linear-gradient(135deg, #c0c0c0, #e8e8e8); }
+    .badge-3 { background: linear-gradient(135deg, #cd7f32, #e8b67e); }
 
-    .wine-info h3 {
+    .wine h3 {
         font-size: 18px;
-        font-weight: 600;
         margin-bottom: 4px;
     }
 
@@ -403,11 +252,11 @@
         margin-top: 8px;
     }
 
-    .wine-bars {
+    .bars {
         margin: 16px 0;
     }
 
-    .bar-item {
+    .bar {
         margin-bottom: 12px;
     }
 
@@ -420,7 +269,7 @@
         text-transform: uppercase;
     }
 
-    .bar-track {
+    .bar-bg {
         height: 6px;
         background: #1a1a1a;
         border-radius: 3px;
@@ -432,10 +281,10 @@
         border-radius: 3px;
     }
 
-    .bar-quality { background: #fff; }
-    .bar-value { background: #0f3; }
+    .bar-q { background: #fff; }
+    .bar-v { background: #0f3; }
 
-    .wine-why {
+    .why {
         font-size: 14px;
         color: #aaa;
         line-height: 1.6;
@@ -443,26 +292,91 @@
         border-top: 1px solid #1a1a1a;
     }
 
-    .section-header {
-        font-size: 13px;
-        font-weight: 600;
-        color: #888;
-        margin: 24px 0 12px;
-        text-transform: uppercase;
-    }
-
-    .error-card {
+    .error {
         background: #1a0000;
         border: 1px solid #330000;
         border-radius: 16px;
         padding: 20px;
-        margin: 20px 0;
         text-align: center;
-        color: #ff4444;
+        color: #f44;
     }
 
     input[type="file"] {
         display: none;
+    }
+
+    #camera {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 1000;
+        display: none;
+    }
+
+    #video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cam-controls {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px 20px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .capture {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #fff;
+        border: 4px solid #000;
+        cursor: pointer;
+    }
+
+    .done {
+        background: #0f3;
+        color: #000;
+        border: none;
+        border-radius: 12px;
+        padding: 12px 24px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .page-num {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
     }
 </style>
 ```
@@ -470,373 +384,328 @@
 </head>
 <body>
     <div class="header">
-        <div>
-            <h1>Wine Analyzer</h1>
-            <p>Find the best value</p>
-        </div>
-        <button class="history-btn" id="historyBtn">History</button>
+        <h1>Wine Analyzer</h1>
+        <p>Find the best value</p>
     </div>
 
 ```
 <div class="container">
-    <div class="adventure-card">
-        <div class="adventure-title">Adventure Mode</div>
+    <div class="card">
+        <div class="card-title">Adventure Mode</div>
         
-        <div class="adventure-options">
-            <div class="adventure-option active" data-level="1">
+        <div class="options" id="modeOptions">
+            <div class="option active" data-level="1">
                 <div class="option-emoji">🛡️</div>
                 <div class="option-label">Safe</div>
             </div>
-            <div class="adventure-option" data-level="2">
+            <div class="option" data-level="2">
                 <div class="option-emoji">🧭</div>
                 <div class="option-label">Curious</div>
             </div>
-            <div class="adventure-option" data-level="3">
+            <div class="option" data-level="3">
                 <div class="option-emoji">🗺️</div>
                 <div class="option-label">Explorer</div>
             </div>
         </div>
 
-        <div class="preferences-box">
-            <h3 id="preferencesTitle">Safe includes</h3>
-            <div class="wine-types">
-                <div>
-                    <div class="wine-type-label">Reds</div>
-                    <div class="wine-type" id="redsList">Pinot Noir, Gamay</div>
-                </div>
-                <div>
-                    <div class="wine-type-label">Whites</div>
-                    <div class="wine-type" id="whitesList">Chablis, Sancerre</div>
-                </div>
-            </div>
+        <div class="info-box" id="modeInfo">
+            Reds: Pinot Noir, Gamay<br>
+            Whites: Chablis, Sancerre
         </div>
     </div>
 
-    <div id="uploadSection">
-        <button class="camera-btn" id="cameraBtn">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-            Capture Wine List
-        </button>
-        <button class="camera-btn upload-btn" id="uploadBtn">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            Upload Photos
-        </button>
+    <div id="upload">
+        <button class="btn" id="camBtn">📷 Capture Wine List</button>
+        <button class="btn btn-secondary" id="upBtn">📤 Upload Photos</button>
         <input type="file" accept="image/*" multiple id="fileInput">
     </div>
 
-    <div id="capturedSection"></div>
-    <div id="loadingSection"></div>
-    <div id="errorSection"></div>
-    <div id="resultsSection"></div>
+    <div id="captured"></div>
+    <div id="loading"></div>
+    <div id="error"></div>
+    <div id="results"></div>
 </div>
 
-<div id="videoContainer">
-    <button class="close-camera" id="closeCamera">×</button>
-    <div class="page-counter" id="pageCounter">Page 1</div>
+<div id="camera">
+    <button class="close" id="closeCam">×</button>
+    <div class="page-num" id="pageNum">Page 1</div>
     <video id="video" autoplay playsinline></video>
     <canvas id="canvas" style="display:none"></canvas>
-    
-    <div class="camera-controls">
-        <button class="done-btn" id="doneBtn" style="display:none;">Done</button>
-        <button class="capture-btn" id="captureBtn"></button>
+    <div class="cam-controls">
+        <button class="done" id="doneBtn" style="display:none;">Done</button>
+        <button class="capture" id="capBtn"></button>
     </div>
 </div>
 
 <script>
-    const adventureLevels = {
+    const modes = {
         1: {
-            label: "Safe",
             reds: ['pinot noir', 'gamay', 'burgundy', 'beaujolais', 'chinon'],
-            whites: ['chablis', 'sancerre', 'gruner veltliner', 'grüner veltliner', 'muscadet'],
-            boost: 1.2
+            whites: ['chablis', 'sancerre', 'gruner veltliner', 'grüner veltliner'],
+            boost: 1.2,
+            info: 'Reds: Pinot Noir, Gamay<br>Whites: Chablis, Sancerre'
         },
         2: {
-            label: "Curious",
             reds: ['pinot noir', 'gamay', 'grenache', 'barbera', 'dolcetto', 'valpolicella'],
-            whites: ['chablis', 'sancerre', 'albariño', 'verdicchio', 'soave', 'chenin blanc'],
-            boost: 1.1
+            whites: ['chablis', 'sancerre', 'albariño', 'verdicchio', 'chenin blanc'],
+            boost: 1.1,
+            info: 'Reds: Pinot, Grenache, Barbera<br>Whites: Chablis, Albariño'
         },
         3: {
-            label: "Explorer",
-            reds: ['tempranillo', 'rioja', 'nebbiolo', 'sangiovese', 'syrah', 'monastrell'],
-            whites: ['viognier', 'roussanne', 'chardonnay', 'semillon', 'vouvray'],
-            boost: 1.0
+            reds: ['tempranillo', 'rioja', 'nebbiolo', 'sangiovese', 'syrah'],
+            whites: ['viognier', 'roussanne', 'chardonnay', 'semillon'],
+            boost: 1.0,
+            info: 'Reds: Tempranillo, Nebbiolo, Syrah<br>Whites: Viognier, Chardonnay'
         }
     };
 
-    let currentAdventureLevel = 1;
+    let level = 1;
+    let pages = [];
     let stream = null;
-    let capturedPages = [];
 
-    document.querySelectorAll('.adventure-option').forEach(option => {
-        option.addEventListener('click', function() {
-            document.querySelectorAll('.adventure-option').forEach(o => o.classList.remove('active'));
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.onclick = function() {
+            document.querySelectorAll('.option').forEach(o => o.classList.remove('active'));
             this.classList.add('active');
-            currentAdventureLevel = parseInt(this.dataset.level);
-            updateAdventureDisplay();
-        });
+            level = parseInt(this.dataset.level);
+            document.getElementById('modeInfo').innerHTML = modes[level].info;
+        };
     });
 
-    function updateAdventureDisplay() {
-        const level = adventureLevels[currentAdventureLevel];
-        document.getElementById('preferencesTitle').textContent = `${level.label} includes`;
-        document.getElementById('redsList').textContent = level.reds.slice(0, 2).join(', ');
-        document.getElementById('whitesList').textContent = level.whites.slice(0, 2).join(', ');
-    }
+    document.getElementById('camBtn').onclick = openCam;
+    document.getElementById('upBtn').onclick = () => document.getElementById('fileInput').click();
+    document.getElementById('fileInput').onchange = handleFiles;
+    document.getElementById('closeCam').onclick = closeCam;
+    document.getElementById('capBtn').onclick = capture;
+    document.getElementById('doneBtn').onclick = finishCam;
 
-    document.getElementById('cameraBtn').addEventListener('click', openCamera);
-    document.getElementById('uploadBtn').addEventListener('click', () => {
-        document.getElementById('fileInput').click();
-    });
-    document.getElementById('fileInput').addEventListener('change', handleFileUpload);
-    document.getElementById('closeCamera').addEventListener('click', closeCamera);
-    document.getElementById('captureBtn').addEventListener('click', capturePhoto);
-    document.getElementById('doneBtn').addEventListener('click', finishCapturing);
-
-    async function openCamera() {
+    async function openCam() {
         try {
             stream = await navigator.mediaDevices.getUserMedia({ 
                 video: { facingMode: 'environment' } 
             });
-            
             document.getElementById('video').srcObject = stream;
-            document.getElementById('videoContainer').style.display = 'block';
-            updatePageCounter();
+            document.getElementById('camera').style.display = 'block';
+            updatePageNum();
         } catch (err) {
-            alert('Camera access denied. Please use upload option.');
+            alert('Camera denied. Use upload instead.');
         }
     }
 
-    function closeCamera() {
-        if (stream) {
-            stream.getTracks().forEach(track => track.stop());
-        }
-        document.getElementById('videoContainer').style.display = 'none';
+    function closeCam() {
+        if (stream) stream.getTracks().forEach(t => t.stop());
+        document.getElementById('camera').style.display = 'none';
         document.getElementById('doneBtn').style.display = 'none';
     }
 
-    function updatePageCounter() {
-        document.getElementById('pageCounter').textContent = `Page ${capturedPages.length + 1}`;
+    function updatePageNum() {
+        document.getElementById('pageNum').textContent = `Page ${pages.length + 1}`;
     }
 
-    function capturePhoto() {
-        const video = document.getElementById('video');
-        const canvas = document.getElementById('canvas');
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        canvas.getContext('2d').drawImage(video, 0, 0);
+    function capture() {
+        const vid = document.getElementById('video');
+        const can = document.getElementById('canvas');
+        can.width = vid.videoWidth;
+        can.height = vid.videoHeight;
+        can.getContext('2d').drawImage(vid, 0, 0);
         
-        canvas.toBlob((blob) => {
+        can.toBlob(blob => {
             const reader = new FileReader();
-            reader.onload = (e) => {
-                capturedPages.push(e.target.result);
-                updatePageCounter();
+            reader.onload = e => {
+                pages.push(e.target.result);
+                updatePageNum();
                 document.getElementById('doneBtn').style.display = 'block';
-                displayCapturedPages();
+                showPages();
             };
             reader.readAsDataURL(blob);
         }, 'image/jpeg', 0.95);
     }
 
-    function finishCapturing() {
-        closeCamera();
-        document.getElementById('uploadSection').style.display = 'none';
+    function finishCam() {
+        closeCam();
+        document.getElementById('upload').style.display = 'none';
     }
 
-    function handleFileUpload(e) {
-        const files = Array.from(e.target.files);
-        files.forEach(file => {
+    function handleFiles(e) {
+        Array.from(e.target.files).forEach(file => {
             const reader = new FileReader();
-            reader.onload = (e) => {
-                capturedPages.push(e.target.result);
-                displayCapturedPages();
+            reader.onload = e => {
+                pages.push(e.target.result);
+                showPages();
             };
             reader.readAsDataURL(file);
         });
-        document.getElementById('uploadSection').style.display = 'none';
+        document.getElementById('upload').style.display = 'none';
     }
 
-    function displayCapturedPages() {
+    function showPages() {
         const html = `
-            <div class="page-grid">
-                ${capturedPages.map((page, i) => `
-                    <div class="page-thumbnail">
-                        <img src="${page}" alt="Page ${i+1}">
-                        <div class="page-number">${i+1}</div>
-                        <button class="remove-page" onclick="removePage(${i})">×</button>
-                    </div>
-                `).join('')}
-            </div>
-            <div class="page-actions">
-                <button class="btn-analyze" onclick="analyzeAllPages()">Analyze ${capturedPages.length} Page${capturedPages.length > 1 ? 's' : ''}</button>
-                <button class="btn-add-more" onclick="addMorePages()">+ More</button>
+            <div class="card">
+                <div class="thumbnails">
+                    ${pages.map((p, i) => `
+                        <div class="thumb">
+                            <img src="${p}">
+                            <div class="thumb-num">${i+1}</div>
+                            <button class="thumb-remove" onclick="removePage(${i})">×</button>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="actions">
+                    <button class="btn btn-analyze" onclick="analyze()">
+                        Analyze ${pages.length} Page${pages.length > 1 ? 's' : ''}
+                    </button>
+                    <button class="btn btn-secondary btn-add" onclick="addMore()">
+                        + More
+                    </button>
+                </div>
             </div>
         `;
-        document.getElementById('capturedSection').innerHTML = html;
+        document.getElementById('captured').innerHTML = html;
     }
 
-    function removePage(index) {
-        capturedPages.splice(index, 1);
-        if (capturedPages.length === 0) {
-            resetApp();
+    function removePage(i) {
+        pages.splice(i, 1);
+        if (pages.length === 0) {
+            reset();
         } else {
-            displayCapturedPages();
+            showPages();
         }
     }
 
-    function addMorePages() {
+    function addMore() {
         document.getElementById('fileInput').click();
     }
 
-    function resetApp() {
-        capturedPages = [];
-        document.getElementById('uploadSection').style.display = 'block';
-        document.getElementById('capturedSection').innerHTML = '';
-        document.getElementById('resultsSection').innerHTML = '';
-        document.getElementById('errorSection').innerHTML = '';
+    function reset() {
+        pages = [];
+        document.getElementById('upload').style.display = 'block';
+        document.getElementById('captured').innerHTML = '';
+        document.getElementById('results').innerHTML = '';
+        document.getElementById('error').innerHTML = '';
         document.getElementById('fileInput').value = '';
     }
 
-    async function analyzeAllPages() {
-        document.getElementById('loadingSection').innerHTML = `
-            <div class="loading-card">
+    async function analyze() {
+        document.getElementById('loading').innerHTML = `
+            <div class="card loading">
                 <div class="spinner"></div>
-                <div style="font-size:15px;margin-bottom:8px;">Analyzing ${capturedPages.length} page${capturedPages.length > 1 ? 's' : ''}...</div>
-                <div style="font-size:13px;color:#666;">This may take a moment</div>
+                <div>Analyzing ${pages.length} page${pages.length > 1 ? 's' : ''}...</div>
             </div>
         `;
-        document.getElementById('errorSection').innerHTML = '';
-        document.getElementById('resultsSection').innerHTML = '';
+        document.getElementById('error').innerHTML = '';
+        document.getElementById('results').innerHTML = '';
 
         try {
-            const imageContents = capturedPages.map((img, i) => ({
+            const imgs = pages.map(p => ({
                 type: 'image',
-                source: {
-                    type: 'base64',
-                    media_type: 'image/jpeg',
-                    data: img.split(',')[1]
-                }
+                source: { type: 'base64', media_type: 'image/jpeg', data: p.split(',')[1] }
             }));
 
-            const level = adventureLevels[currentAdventureLevel];
-            const prompt = `Extract ALL wines from these wine list images. For each wine identify: name, producer, region, vintage, price, classification (Grand Cru, Premier Cru, etc).
+            const mode = modes[level];
+            const prompt = `Extract ALL wines from these images. For each: name, producer, region, vintage, price, classification.
 ```
 
-Then analyze based on:
+Analyze based on:
 
-- Appellation hierarchy (village/1er cru/grand cru)
+- Appellation hierarchy (village/1er/grand cru)
 - Producer reputation
-- Vintage quality for that region
-- User preference (boost wines matching: ${level.reds.join(’, ‘)}, ${level.whites.join(’, ’)})
+- Vintage quality
+- User preference: ${mode.reds.join(’, ‘)}, ${mode.whites.join(’, ’)}
 
-Return ONLY the TOP 5 wines ranked by VALUE FOR MONEY (not absolute prestige). Keep reasoning SHORT and PRACTICAL.
+Return TOP 5 by VALUE FOR MONEY (not prestige). Keep reasoning SHORT.
 
-Format as JSON:
+JSON format:
 [{
 “rank”: 1,
-“name”: “Wine Name”,
+“name”: “Wine”,
 “producer”: “Producer”,
 “region”: “Region”,
 “vintage”: “2020”,
-“price”: “45.00”,
+“price”: “45”,
 “classification”: “Grand Cru”,
 “qualityScore”: 85,
 “valueScore”: 90,
-“why”: “1-2 sentence practical explanation”
+“why”: “Brief reason”
 }]`;
 
 ```
-            const response = await fetch('https://api.anthropic.com/v1/messages', {
+            const res = await fetch('https://api.anthropic.com/v1/messages', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     model: 'claude-sonnet-4-20250514',
                     max_tokens: 2000,
-                    messages: [{
-                        role: 'user',
-                        content: [...imageContents, { type: 'text', text: prompt }]
-                    }]
+                    messages: [{ role: 'user', content: [...imgs, { type: 'text', text: prompt }] }]
                 })
             });
 
-            const data = await response.json();
+            const data = await res.json();
             const text = data.content.find(c => c.type === 'text')?.text || '[]';
-            const jsonMatch = text.match(/\[[\s\S]*\]/);
-            const wines = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+            const match = text.match(/\[[\s\S]*\]/);
+            const wines = match ? JSON.parse(match[0]) : [];
 
-            if (wines.length === 0) {
-                throw new Error('No wines found');
-            }
-
-            displayResults(wines);
+            if (wines.length === 0) throw new Error('No wines found');
+            
+            showResults(wines);
         } catch (err) {
-            document.getElementById('errorSection').innerHTML = `
-                <div class="error-card">
-                    Failed to analyze. Please try again or upload clearer images.
+            document.getElementById('error').innerHTML = `
+                <div class="card error">
+                    Failed to analyze. Try clearer images.
                 </div>
             `;
         } finally {
-            document.getElementById('loadingSection').innerHTML = '';
+            document.getElementById('loading').innerHTML = '';
         }
     }
 
-    function displayResults(wines) {
-        const html = `
-            <div class="section-header">Top 5 by Value</div>
-            ${wines.map((wine, i) => {
-                const rankClass = i === 0 ? 'top1' : i === 1 ? 'top2' : i === 2 ? 'top3' : '';
-                return `
-                    <div class="wine-card">
-                        <div class="wine-rank">
-                            <div class="rank-badge ${rankClass}">${wine.rank || i+1}</div>
-                            <div class="wine-info">
-                                <h3>${wine.name}</h3>
-                                <div class="wine-meta">${wine.producer} • ${wine.vintage}</div>
-                                <div class="wine-meta">${wine.region}${wine.classification ? ' • ' + wine.classification : ''}</div>
-                                <div class="wine-price">£${wine.price}</div>
-                            </div>
+    function showResults(wines) {
+        const html = wines.map((w, i) => {
+            const bc = i === 0 ? 'badge-1' : i === 1 ? 'badge-2' : i === 2 ? 'badge-3' : '';
+            return `
+                <div class="wine">
+                    <div class="rank-row">
+                        <div class="badge ${bc}">${w.rank || i+1}</div>
+                        <div>
+                            <h3>${w.name}</h3>
+                            <div class="wine-meta">${w.producer} • ${w.vintage}</div>
+                            <div class="wine-meta">${w.region}${w.classification ? ' • ' + w.classification : ''}</div>
+                            <div class="wine-price">£${w.price}</div>
                         </div>
-                        <div class="wine-bars">
-                            <div class="bar-item">
-                                <div class="bar-label">
-                                    <span>Quality</span>
-                                    <span>${wine.qualityScore}/100</span>
-                                </div>
-                                <div class="bar-track">
-                                    <div class="bar-fill bar-quality" style="width:${wine.qualityScore}%"></div>
-                                </div>
-                            </div>
-                            <div class="bar-item">
-                                <div class="bar-label">
-                                    <span>Value</span>
-                                    <span>${wine.valueScore}/100</span>
-                                </div>
-                                <div class="bar-track">
-                                    <div class="bar-fill bar-value" style="width:${wine.valueScore}%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wine-why"><strong>Why:</strong> ${wine.why}</div>
                     </div>
-                `;
-            }).join('')}
-            <button class="camera-btn" onclick="resetApp()" style="margin-top:20px;">Scan Another List</button>
+                    <div class="bars">
+                        <div class="bar">
+                            <div class="bar-label">
+                                <span>Quality</span>
+                                <span>${w.qualityScore}/100</span>
+                            </div>
+                            <div class="bar-bg">
+                                <div class="bar-fill bar-q" style="width:${w.qualityScore}%"></div>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-label">
+                                <span>Value</span>
+                                <span>${w.valueScore}/100</span>
+                            </div>
+                            <div class="bar-bg">
+                                <div class="bar-fill bar-v" style="width:${w.valueScore}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="why"><strong>Why:</strong> ${w.why}</div>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('results').innerHTML = html + `
+            <button class="btn" onclick="reset()" style="margin-top:20px;">
+                Scan Another List
+            </button>
         `;
-        document.getElementById('resultsSection').innerHTML = html;
     }
-
-    document.getElementById('historyBtn').addEventListener('click', () => {
-        alert('History feature coming soon!');
-    });
-
-    updateAdventureDisplay();
 </script>
 ```
 
 </body>
 </html>
+
